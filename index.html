@@ -30,18 +30,18 @@ body{
 }
 .bg-glow span{
     position:absolute;
-    width:400px;
-    height:400px;
+    width:420px;
+    height:420px;
     background:rgba(56,189,248,0.15);
-    filter:blur(120px);
-    animation:float 18s infinite alternate;
+    filter:blur(130px);
+    animation:float 20s infinite alternate ease-in-out;
 }
 .bg-glow span:nth-child(1){top:10%;left:10%;}
 .bg-glow span:nth-child(2){bottom:10%;right:15%;background:rgba(167,139,250,0.15);}
 
 @keyframes float{
     from{transform:translateY(0);}
-    to{transform:translateY(-80px);}
+    to{transform:translateY(-100px);}
 }
 
 .container{
@@ -50,10 +50,17 @@ body{
     padding:80px 20px;
 }
 
+/* Header animation */
 header{
     text-align:center;
     margin-bottom:80px;
+    animation:fadeDown 1.2s ease forwards;
 }
+@keyframes fadeDown{
+    from{opacity:0;transform:translateY(-30px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
 header h1{
     font-size:3rem;
     font-weight:800;
@@ -76,18 +83,36 @@ header p{
 
 .step{
     background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(14px);
     border:1px solid rgba(255,255,255,0.08);
-    border-radius:18px;
+    border-radius:20px;
     padding:30px;
     position:relative;
-    transition:0.4s ease;
+    transition:0.5s ease;
+    opacity:0;
+    animation:fadeUp 0.8s ease forwards;
 }
-.step:hover{
-    transform:translateY(-10px);
-    border-color:#38bdf8;
+.step:nth-child(1){animation-delay:.1s}
+.step:nth-child(2){animation-delay:.2s}
+.step:nth-child(3){animation-delay:.3s}
+.step:nth-child(4){animation-delay:.4s}
+.step:nth-child(5){animation-delay:.5s}
+.step:nth-child(6){animation-delay:.6s}
+.step:nth-child(7){animation-delay:.7s}
+.step:nth-child(8){animation-delay:.8s}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
 }
 
+.step:hover{
+    transform:translateY(-14px) scale(1.02);
+    border-color:#38bdf8;
+    box-shadow:0 0 40px rgba(56,189,248,0.25);
+}
+
+/* Step number pulse */
 .step-number{
     position:absolute;
     top:-20px;
@@ -97,6 +122,12 @@ header p{
     font-weight:800;
     padding:10px 16px;
     border-radius:12px;
+    animation:pulse 2.5s infinite;
+}
+@keyframes pulse{
+    0%{box-shadow:0 0 0 rgba(56,189,248,0.6);}
+    70%{box-shadow:0 0 18px rgba(56,189,248,0);}
+    100%{box-shadow:0 0 0 rgba(56,189,248,0);}
 }
 
 .step h2{
@@ -111,11 +142,12 @@ header p{
 
 /* Warning box */
 .warning{
-    margin-top:80px;
+    margin-top:90px;
     background:linear-gradient(135deg,rgba(239,68,68,0.15),rgba(244,114,182,0.15));
     border:1px solid rgba(239,68,68,0.4);
-    border-radius:20px;
-    padding:30px;
+    border-radius:22px;
+    padding:32px;
+    animation:fadeUp 1s ease forwards;
 }
 .warning h3{
     color:#f87171;
@@ -126,9 +158,31 @@ header p{
     opacity:0.9;
 }
 
+/* Contact */
+.contact{
+    margin-top:70px;
+    text-align:center;
+    animation:fadeUp 1.2s ease forwards;
+}
+.contact a{
+    display:inline-block;
+    margin-top:12px;
+    padding:14px 26px;
+    border-radius:999px;
+    background:linear-gradient(90deg,#38bdf8,#a78bfa);
+    color:#020617;
+    font-weight:700;
+    text-decoration:none;
+    transition:.4s;
+}
+.contact a:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 40px rgba(167,139,250,0.5);
+}
+
 /* Footer */
 footer{
-    margin-top:80px;
+    margin-top:90px;
     text-align:center;
     opacity:0.6;
     font-size:0.9rem;
@@ -151,89 +205,25 @@ footer{
 
 <section class="steps">
 
-    <div class="step">
-        <div class="step-number">STEP 1</div>
-        <h2>Select Blockchain</h2>
-        <p>
-            Choose any token from supported chains such as 
-            <strong>BSC, Solana, Polygon, or Ethereum</strong>.
-            Avoid random or inactive tokens.
-        </p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">STEP 2</div>
-        <h2>Copy Contract Address</h2>
-        <p>
-            Copy the contract address from MintMe.
-            Verify the token on-chain before doing anything.
-        </p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">STEP 3</div>
-        <h2>Check Web3 Liquidity</h2>
-        <p>
-            Search the token on <strong>GeckoTerminal</strong>.
-            Confirm that a real liquidity pool exists.
-        </p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">STEP 4</div>
-        <h2>Compare Prices</h2>
-        <p>
-            Compare MintMe sell orders with Web3 pool price.
-            If MintMe prices are <strong>higher</strong> and community is active,
-            the opportunity may exist.
-        </p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">STEP 5</div>
-        <h2>Buy Small Amount</h2>
-        <p>
-            Buy only <strong>$0.10 – $0.30</strong> worth of tokens from the Web3 pool.
-            Never go big without testing.
-        </p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">STEP 6</div>
-        <h2>Deposit & Sell</h2>
-        <p>
-            Deposit the token into MintMe and place a sell order
-            slightly below the highest market price.
-        </p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">STEP 7</div>
-        <h2>Skip When Needed</h2>
-        <p>
-            If MintMe price is <strong>lower</strong> than Web3 pool
-            or no liquidity exists, skip the token immediately.
-        </p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">STEP 8</div>
-        <h2>Wait Patiently</h2>
-        <p>
-            Wait for buyers naturally.
-            Arbitrage is about patience, not speed.
-        </p>
-    </div>
+    <div class="step"><div class="step-number">STEP 1</div><h2>Select Blockchain</h2><p>Choose tokens from <strong>BSC, Solana, Polygon, or Ethereum</strong>. Avoid inactive projects.</p></div>
+    <div class="step"><div class="step-number">STEP 2</div><h2>Copy Contract Address</h2><p>Copy the CA from MintMe and verify it on-chain.</p></div>
+    <div class="step"><div class="step-number">STEP 3</div><h2>Check Web3 Liquidity</h2><p>Use <strong>GeckoTerminal</strong> to confirm a real pool exists.</p></div>
+    <div class="step"><div class="step-number">STEP 4</div><h2>Compare Prices</h2><p>If MintMe sell orders are <strong>higher</strong> and community is active, continue.</p></div>
+    <div class="step"><div class="step-number">STEP 5</div><h2>Buy Small Amount</h2><p>Buy only <strong>$0.10 – $0.30</strong> from Web3 pool.</p></div>
+    <div class="step"><div class="step-number">STEP 6</div><h2>Deposit & Sell</h2><p>Deposit to MintMe and place a sell order slightly below market.</p></div>
+    <div class="step"><div class="step-number">STEP 7</div><h2>Skip When Needed</h2><p>If MintMe price is lower or no pool exists, skip instantly.</p></div>
+    <div class="step"><div class="step-number">STEP 8</div><h2>Wait Patiently</h2><p>Let buyers come naturally. Arbitrage rewards patience.</p></div>
 
 </section>
 
 <div class="warning">
     <h3>⚠ Important Disclaimer</h3>
-    <p>
-        Never invest without proper research.
-        Avoid MintMe blockchain-only tokens without external liquidity.
-        This guide is educational and does not guarantee profit.
-    </p>
+    <p>Never invest without research. Avoid MintMe-only blockchain tokens. This page is educational, not financial advice.</p>
+</div>
+
+<div class="contact">
+    <h2>Need Help or Questions?</h2>
+    <a href="https://t.me/saadweb3" target="_blank">Contact on Telegram</a>
 </div>
 
 <footer>
